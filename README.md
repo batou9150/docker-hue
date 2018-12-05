@@ -2,6 +2,7 @@
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/batou9150/hue.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/batou9150/hue.svg)
+[Docker Hub](https://hub.docker.com/r/batou9150/hue/) 
 
 **A docker image to run [Hue](http://gethue.com)**
 
