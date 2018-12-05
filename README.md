@@ -5,8 +5,6 @@
 
 **A docker image to run [Hue](http://gethue.com)**
 
-> Hue website : [gethue.com](http://gethue.com)
-
 > Hue on github : [cloudera/hue](https://github.com/cloudera/hue)
 
 ## Environment Variables
