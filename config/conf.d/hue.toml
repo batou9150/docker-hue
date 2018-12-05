@@ -1,0 +1,8 @@
+[template]
+src = "hue.ini"
+dest = "/etc/hue/conf/hue.ini"
+owner = "root"
+mode = "0755"
+keys = [
+    "/services"
+]
