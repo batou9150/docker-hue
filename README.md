@@ -1,4 +1,15 @@
-# Hue
+# batou9150/hue
+
+![Docker Pulls](https://img.shields.io/docker/pulls/batou9150/hue.svg)
+![Docker Stars](https://img.shields.io/docker/stars/batou9150/hue.svg)
+
+**A docker image to run [Hue](http://gethue.com)**
+
+> Hue website : [gethue.com](http://gethue.com)
+
+> Hue on github : [cloudera/hue](https://github.com/cloudera/hue)
+
+## Environment Variables
 
 Hue
 * `CONFIG_HUE_BIND_HOST` : Webserver listens on this address. (default "0.0.0.0")
