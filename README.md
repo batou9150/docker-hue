@@ -21,7 +21,7 @@ SMTP (Optionnal)
 
 SPARK with LIVY (Optionnal)
 * `CONFIG_LIVY_HOST` : The host of the livy server
-* `CONFIG_LIVY_PORT` : The port of the livy server (default "8998"
+* `CONFIG_LIVY_PORT` : The port of the livy server (default "8998")
 
 HDFS
 * `CONFIG_HDFS_DEFAULTFS` : The filesystem uri. (default "hdfs://localhost:8020")

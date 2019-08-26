@@ -1,48 +1,49 @@
-FROM ubuntu:trusty
-
-RUN apt-get update && apt-get install -y bc wget dnsutils
-
-# Installing Oracle JDK
-RUN apt-get install -y software-properties-common && \
-	add-apt-repository -y ppa:webupd8team/java && \
-	apt-get update -y && \
-	echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && \
-	apt-get install -y oracle-java8-installer
+FROM ubuntu:18.04
 
 # Installing Dependencies
-RUN apt-get update -y
-RUN apt-get install --fix-missing -q -y \
-  git \
-  ant \
-  gcc \
-  g++ \
-  libkrb5-dev \
-  libmysqlclient-dev \
-  libssl-dev \
-  libsasl2-dev \
-  libsasl2-modules-gssapi-mit \
-  libsqlite3-dev \
-  libtidy-0.99-0 \
-  libxml2-dev \
-  libxslt-dev \
-  libffi-dev \
-  make \
-  maven \
-  libldap2-dev \
-  python-dev \
-  python-setuptools \
-  libgmp3-dev \
-  libz-dev
+RUN apt-get update -y && \
+  apt-get install -y \
+    openjdk-8-jdk \
+    bc \
+    curl \
+    wget \
+    dnsutils \
+    git \
+    ant \
+    gcc \
+    g++ \
+    libffi-dev \
+    libkrb5-dev \
+    libmysqlclient-dev \
+    libsasl2-dev \
+    libsasl2-modules-gssapi-mit \
+    libsqlite3-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxslt-dev \
+    make \
+    maven \
+    libldap2-dev \
+    python-dev \
+    python-setuptools \
+    libgmp3-dev \
+    software-properties-common
+
+# java 8
+RUN update-java-alternatives -s java-1.8.0-openjdk-amd64
+
+# Installing Node.js
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+  apt-get install -y nodejs
 
 # Installing Hue
-ENV HUE_VERSION=4.3.0
+ENV HUE_VERSION=4.4.0
 ENV HUE_HOME=/opt/hue-$HUE_VERSION
 ENV HUE_CONF_DIR=/etc/hue/conf
 RUN mkdir $HUE_HOME && mkdir /etc/hue && ln -s $HUE_HOME/desktop/conf $HUE_CONF_DIR
 WORKDIR $HUE_HOME
 
 RUN git clone https://github.com/cloudera/hue.git -b release-$HUE_VERSION .
-RUN easy_install pylint==0.28.0
 RUN make apps
 RUN rm $HUE_CONF_DIR/*.ini
 
