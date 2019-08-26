@@ -33,11 +33,11 @@ RUN apt-get update -y && \
 RUN update-java-alternatives -s java-1.8.0-openjdk-amd64
 
 # Installing Node.js
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
   apt-get install -y nodejs
 
 # Installing Hue
-ENV HUE_VERSION=4.4.0
+ENV HUE_VERSION=4.5.0
 ENV HUE_HOME=/opt/hue-$HUE_VERSION
 ENV HUE_CONF_DIR=/etc/hue/conf
 RUN mkdir $HUE_HOME && mkdir /etc/hue && ln -s $HUE_HOME/desktop/conf $HUE_CONF_DIR
@@ -46,6 +46,7 @@ WORKDIR $HUE_HOME
 RUN git clone https://github.com/cloudera/hue.git -b release-$HUE_VERSION .
 RUN make apps
 RUN rm $HUE_CONF_DIR/*.ini
+RUN useradd -ms /bin/bash hue && chown -R hue $HUE_HOME
 
 EXPOSE 8888
 
@@ -60,4 +61,4 @@ RUN chmod a+x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["build/env/bin/hue", "runserver_plus", "0.0.0.0:8888"]
+CMD ["./build/env/bin/supervisor"]
