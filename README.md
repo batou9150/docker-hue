@@ -14,6 +14,18 @@ Hue
 * `CONFIG_HUE_BIND_HOST` : Webserver listens on this address. (default "0.0.0.0")
 * `CONFIG_HUE_PORT` : Webserver listens on this port. (default "8888")
 * `CONFIG_HUE_APP_BLACKLIST` : Comma separated list of apps to not load at server startup. (Optionnal)
+* `CONFIG_DJANGO_DEBUG_MODE` : Enable or disable debug mode. (default "true")
+* `CONFIG_TIME_ZONE` : Time zone name. (default "America/Los_Angeles")
+* `CONFIG_ENABLE_PROMETHEUS` : Turn on Prometheus metrics end point /metrics. (default "false")
+
+Hue Database
+* `CONFIG_DATABASE_ENGINE` : Database engine, such as mysql, postgres, oracle or sqlite3 (default sqlite3")
+* `CONFIG_DATABASE_HOST` : Database host. (default "")
+* `CONFIG_DATABASE_PORT` : Database port. (default "")
+* `CONFIG_DATABASE_USER` : Database username. (default "")
+* `CONFIG_DATABASE_PASSWORD` : Database password. (default "")
+* `CONFIG_DATABASE_NAME` : Database name, or path to DB if using sqlite3. (default desktop/desktop.db")
+* `CONFIG_DATABASE_SCHEMA` : Database schema, to be used only when public schema is revoked in postgres. (default public")
 
 SMTP (Optionnal)
 * `CONFIG_SMTP_HOST` : SMTP server
